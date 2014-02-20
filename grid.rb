@@ -1,26 +1,21 @@
 class Grid
 
-  attr_reader :cells, :grid_size, :n_results
+  attr_reader :cells, :grid_size, :number_of_results
 
-  def initialize(n_results, grid_size, cells)
-    @n_results = n_results
-    @grid_size = grid_size
-    @cells = cells
+  def initialize(input)
+    data = input.split(' ').map! { |x| x.to_i }
+    @number_of_results = data[0]
+    @grid_size = data[1]
+    @cells = data.pop(@grid_size * @grid_size).each_slice(@grid_size).to_a
   end
 
-  def coordinates(index)
-    "#{row(index)}, #{column(index)}"
+  def coordinates(x, y)
+    @cells[row(x)][column(y)]
   end
 
   
   def calculate_scores
-    # @cells.each_with_index do |cell, index|
-    #    # i need the coords for the output
-    # end
-  end
 
-  def scores(n_results)
-    # @scores.sort_by {hash| hash[:score].reverse.take(n_results)
   end
 
   private
