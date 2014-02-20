@@ -20,8 +20,14 @@ describe Grid do
     expect(grid.coordinates(2, 1)).to eq(1)
   end
 
+  it 'should return 0 for coordinates located outside the grid' do
+    expect(grid.coordinates(-1, -1)).to eq(0)
+    expect(grid.coordinates(3, 3)).to eq(0)
+  end
+
   it 'value at coordinates 1,1 should return a score of 20' do
     expect(grid.score(1, 1)).to eq(20)
+    expect(grid.score(0, 0)).to eq(10)
   end
 
 

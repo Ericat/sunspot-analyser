@@ -10,14 +10,23 @@ class Grid
   end
 
   def coordinates(x, y)
-    @cells[y][x]
+    max_size = @grid_size-1
+    # 0 <= x && y <= @grid_size-1 ? @cells[y][x] : 0
+    if x >= 0 && x <= max_size
+      if y >= 0 && y <= max_size
+        return @cells[y][x]
+      end
+    end
+    0
   end
 
   def score(x, y)
-    # neighbours = [ ([y-1][x-1]), ([y-1][x]), ([y-1][x+1]),
-                   # ([y][x-1]),   ([y][x]),   ([y][x+1]),
-                   # ([y+1][x-1]), ([y+1][x]), ([y+1][x+1])
-                   # ]
+   score = 0
+   @neighbours = [ coordinates(x-1, y-1),  coordinates(x, y-1), coordinates(x+1, y-1),
+                   coordinates(x-1, y),    coordinates(x, y),   coordinates(x+1, y),
+                   coordinates(x-1, y+1),  coordinates(x, y+1), coordinates(x+1, y+1)
+                  ]
+    score += @neighbours.reduce(:+)
   end
   
   def scores(number_of_results)
