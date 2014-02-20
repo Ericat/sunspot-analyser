@@ -3,31 +3,29 @@ class Grid
   attr_reader :cells, :grid_size, :number_of_results
 
   def initialize(input)
-    data = input.split(' ').map! { |x| x.to_i }
+    data = input.split(' ').map { |x| x.to_i }
     @number_of_results = data[0]
     @grid_size = data[1]
-    @cells = data.pop(@grid_size * @grid_size).each_slice(@grid_size).to_a
+    @cells = data.drop(2).each_slice(@grid_size).to_a
   end
 
   def coordinates(x, y)
-    @cells[row(x)][column(y)]
+    @cells[y][x]
   end
 
+  def score(x, y)
+    # neighbours = [ ([y-1][x-1]), ([y-1][x]), ([y-1][x+1]),
+                   # ([y][x-1]),   ([y][x]),   ([y][x+1]),
+                   # ([y+1][x-1]), ([y+1][x]), ([y+1][x+1])
+                   # ]
+  end
   
-  def calculate_scores
-
+  def scores(number_of_results)
   end
 
-  private
 
-  def row(index)
-    (index - column(index)) / @grid_size
-  end
-
-  def column(index)
-    index % @grid_size
-  end
 end
+
 
 
 

@@ -12,15 +12,17 @@ describe Grid do
     end
   end
   
-  context 'Finding a value from coordinates' do
-    it 'should return the value 4 for coordinates (1, 1)' do
-      expect(grid.coordinates(1, 1)).to eq(2)
-    end
+  it 'should find the value from a set of coordinates' do
+    expect(grid.coordinates(1, 1)).to eq(2)
+    expect(grid.coordinates(0, 0)).to eq(4)
+    expect(grid.coordinates(2, 2)).to eq(1)
+    expect(grid.coordinates(1, 2)).to eq(2)
+    expect(grid.coordinates(2, 1)).to eq(1)
   end
 
-  it 'value at index 4 should return a score of 20' do
-    # scores = grid.calculate_scores
-    # expect(grid.get_scores(1)).to eq('(1,1 score:20)')
+  it 'value at coordinates 1,1 should return a score of 20' do
+    expect(grid.score(1, 1)).to eq(20)
   end
+
 
 end
