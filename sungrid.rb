@@ -1,4 +1,4 @@
-class Grid
+class SunGrid
 
   attr_reader :rows, :grid_size, :number_of_results
 

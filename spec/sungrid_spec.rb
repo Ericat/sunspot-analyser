@@ -1,7 +1,7 @@
-require './grid'
+require './sungrid'
 
-describe Grid do
-    let(:grid) { Grid.new('1 3 4 2 3 2 2 1 3 2 1')}
+describe SunGrid do
+    let(:grid) { SunGrid.new('1 3 4 2 3 2 2 1 3 2 1')}
     
   context 'Initialise' do
     it 'should be initialised with a n of results, a size and an array of numbers' do
