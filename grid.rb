@@ -25,9 +25,17 @@ class Grid
   def scores
     scores =  []
     @rows.flatten.each_with_index do |cell, index|
-      scores << score(x(index), y(index)) 
+      scores << {"#{x(index)},#{y(index)}" => score(x(index), y(index))}
     end
-    scores
+    @scores = scores.sort_by {|hash| hash.values}.reverse!
+  end
+
+  def output(scores)
+    results = []
+    scores.take(@number_of_results).map do |score|
+      results << "(#{score.keys} score:#{score.values})".gsub(Regexp.union(/\[/, /\]/, /\"/), '')
+    end
+    results.join(' ')
   end
 
   private

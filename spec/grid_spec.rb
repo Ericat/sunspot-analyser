@@ -32,8 +32,13 @@ describe Grid do
     expect(grid.score(2, 1)).to eq(11)
   end
 
-  it 'should return an array with each score' do
-    expect(grid.scores).to eq([10, 14, 8, 15, 20, 11, 9, 11, 6])
+  it 'should return an array with each coordinate => score pairs' do
+    expect(grid.scores).to eq([{'1,1'=>20}, {'0,1'=>15}, {'1,0'=>14}, {'2,1'=>11}, {'1,2'=>11}, {'0,0'=>10}, {'0,2'=>9}, {'2,0'=>8}, {'2,2'=>6}])
+  end
+
+  it 'should take n amount of scores and print them out' do
+    scores = grid.scores
+    expect(grid.output(scores)).to eq('(1,1 score:20)')
   end
 
 
