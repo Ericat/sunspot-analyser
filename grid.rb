@@ -9,22 +9,15 @@ class Grid
     @cells = data.drop(2).each_slice(@grid_size).to_a
   end
 
-  def coordinates(x, y)
-    max_size = @grid_size-1
-    # 0 <= x && y <= @grid_size-1 ? @cells[y][x] : 0
-    if x >= 0 && x <= max_size
-      if y >= 0 && y <= max_size
-        return @cells[y][x]
-      end
-    end
-    0
+  def value_at(x, y)
+    valid_range?(x, y) ? @cells[y][x] : 0
   end
 
   def score(x, y)
    score = 0
-   @neighbours = [ coordinates(x-1, y-1),  coordinates(x, y-1), coordinates(x+1, y-1),
-                   coordinates(x-1, y),    coordinates(x, y),   coordinates(x+1, y),
-                   coordinates(x-1, y+1),  coordinates(x, y+1), coordinates(x+1, y+1)
+   @neighbours = [ value_at(x-1, y-1),  value_at(x, y-1), value_at(x+1, y-1),
+                   value_at(x-1, y),    value_at(x, y),   value_at(x+1, y),
+                   value_at(x-1, y+1),  value_at(x, y+1), value_at(x+1, y+1)
                   ]
     score += @neighbours.reduce(:+)
   end
@@ -32,6 +25,12 @@ class Grid
   def scores(number_of_results)
   end
 
+  private
+
+  def valid_range?(x, y)
+    max_size = @grid_size-1
+    x.between?(0, max_size) && y.between?(0, max_size)
+  end
 
 end
 

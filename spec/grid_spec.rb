@@ -12,20 +12,20 @@ describe Grid do
     end
   end
   
-  it 'should find the value from a set of coordinates' do
-    expect(grid.coordinates(1, 1)).to eq(2)
-    expect(grid.coordinates(0, 0)).to eq(4)
-    expect(grid.coordinates(2, 2)).to eq(1)
-    expect(grid.coordinates(1, 2)).to eq(2)
-    expect(grid.coordinates(2, 1)).to eq(1)
+  it 'should find the value from a set of value_at' do
+    expect(grid.value_at(1, 1)).to eq(2)
+    expect(grid.value_at(0, 0)).to eq(4)
+    expect(grid.value_at(2, 2)).to eq(1)
+    expect(grid.value_at(1, 2)).to eq(2)
+    expect(grid.value_at(2, 1)).to eq(1)
   end
 
-  it 'should return 0 for coordinates located outside the grid' do
-    expect(grid.coordinates(-1, -1)).to eq(0)
-    expect(grid.coordinates(3, 3)).to eq(0)
+  it 'should return 0 for value_at located outside the grid' do
+    expect(grid.value_at(-1, -1)).to eq(0)
+    expect(grid.value_at(3, 3)).to eq(0)
   end
 
-  it 'value at coordinates 1,1 should return a score of 20' do
+  it 'value at value_at 1,1 should return a score of 20' do
     expect(grid.score(1, 1)).to eq(20)
     expect(grid.score(0, 0)).to eq(10)
   end
