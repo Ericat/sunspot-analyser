@@ -27,7 +27,7 @@ class SunGrid
     @rows.flatten.each_with_index do |cell, index|
       scores << {"#{x(index)},#{y(index)}" => score(x(index), y(index))}
     end
-    @scores = scores.sort_by {|hash| hash.values}.reverse!
+    @scores = scores.sort_by {|score| score.values}.reverse!
   end
 
   def output(scores)
