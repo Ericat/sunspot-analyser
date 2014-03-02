@@ -14,12 +14,11 @@ class SunGrid
   end
 
   def score(x, y)
-   score = 0
-   @neighbours = [ value_at(x-1, y-1),  value_at(x, y-1), value_at(x+1, y-1),
+   neighbours = [ value_at(x-1, y-1),  value_at(x, y-1), value_at(x+1, y-1),
                    value_at(x-1, y),    value_at(x, y),   value_at(x+1, y),
                    value_at(x-1, y+1),  value_at(x, y+1), value_at(x+1, y+1)
                   ]
-    score += @neighbours.reduce(:+)
+    neighbours.reduce(0, :+)
   end
   
   def scores
@@ -31,10 +30,10 @@ class SunGrid
   end
 
   def output(scores)
-    results = []
-    scores.take(@number_of_results).map do |score|
-      results << "(#{score.keys} score:#{score.values})".gsub(Regexp.union(/\[/, /\]/, /\"/), '')
-    end
+    results = scores.take(@number_of_results).inject([]) do |memo, score|
+                memo << "(#{score.keys} score:#{score.values})".gsub(Regexp.union(/\[/, /\]/, /\"/), '')
+                memo
+              end
     results.join(' ')
   end
 
