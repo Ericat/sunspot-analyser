@@ -22,8 +22,8 @@ Example output:
 
 Visualisation 
 =============
-:small_red_triangle_down: Gems: Sinatra, Sass, Haml
+:small_red_triangle_down: Gems: Sinatra, Sass, Haml.
 
-JQuery Tooltip displays scores:
+JQuery Tooltip plugin displays scores on hover:
 
 ![Interface](https://raw.github.com/Ericat/sunspot-analyser/master/public/images/jquery-hover.png)
