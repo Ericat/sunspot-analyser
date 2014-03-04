@@ -12,6 +12,5 @@ end
 post '/' do
   sungrid = SunGrid.new(params[:input])
   @results = sungrid.scores_to_colours
-  @scores = @results.map {|x| x.map {|y| y[:score]}}.to_json
   haml :layout
 end

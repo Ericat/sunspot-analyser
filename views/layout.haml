@@ -19,7 +19,6 @@
               %td.scores{:title => "#{cell[:score]}", :style => "background-color:rgb(#{cell[:color]}, 0, 0)"}=cell[:value]
     :javascript
       $(document).ready(function() {
-        var scores = #{@scores};
         var cells = $('.scores');
         $(document).tooltip({ position: {at: "center"}});
       });
