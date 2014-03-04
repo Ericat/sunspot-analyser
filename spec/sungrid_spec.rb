@@ -33,13 +33,13 @@ describe SunGrid do
   end
 
   it 'should return an array with each coordinate => score pairs' do
-    scores = [{'1,1'=>20}, {'0,1'=>15}, {'1,0'=>14}, {'2,1'=>11}, {'1,2'=>11}, {'0,0'=>10}, {'0,2'=>9}, {'2,0'=>8}, {'2,2'=>6}]
+    scores = [{"0,0"=>10}, {"1,0"=>14}, {"2,0"=>8}, {"0,1"=>15}, {"1,1"=>20}, {"2,1"=>11}, {"0,2"=>9}, {"1,2"=>11}, {"2,2"=>6}]
     expect(grid.scores).to eq(scores)
   end
 
   it 'should take n amount of scores and print them out' do
     scores = grid.scores
-    expect(grid.output(scores)).to eq('(1,1 score:20)')
+    expect(grid.output).to eq('(1,1 score:20)')
   end
 
 

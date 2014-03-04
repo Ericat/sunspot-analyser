@@ -22,19 +22,34 @@ class SunGrid
   end
   
   def scores
-    scores =  []
+    @scores =  []
     @rows.flatten.each_with_index do |cell, index|
-      scores << {"#{x(index)},#{y(index)}" => score(x(index), y(index))}
+      @scores << {"#{x(index)},#{y(index)}" => score(x(index), y(index))}
     end
-    @scores = scores.sort_by {|score| score.values}.reverse!
+    @scores
   end
 
-  def output(scores)
-    results = scores.take(@number_of_results).inject([]) do |memo, score|
+  def output
+    sorted_scores = @scores.sort_by {|score| score.values}.reverse!
+    results = sorted_scores.take(@number_of_results).inject([]) do |memo, score|
                 memo << "(#{score.keys} score:#{score.values})".gsub(Regexp.union(/\[/, /\]/, /\"/), '')
                 memo
               end
     results.join(' ')
+  end
+
+  def scores_to_colours
+    rows = @rows.flatten
+    points = scores.map(&:values).flatten
+    data = rows.zip(points)
+
+    heat_map =  data.map do |value|
+                { :value => value.first,
+                  :score => value.last,
+                  :color => (value.last * 5)
+                }   
+                end
+    heat_map.each_slice(3).to_a
   end
 
   private

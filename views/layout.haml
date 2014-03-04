@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %link{:rel => 'stylesheet', :href => '/stylesheets/screen.css'}
+    %link{:rel=>'stylesheet', :href=>'/stylesheets/bootstrap.css', :type => "text/css", :media => 'screen'}
+    %link{href: "//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css", rel: "stylesheet"}/
+    %script{src: "//code.jquery.com/jquery-1.10.2.js"}
+    %script{src: "//code.jquery.com/ui/1.10.4/jquery-ui.js"}
+
+  %body
+    %div.container#wrapper
+      %form{:method => 'post', :action => '/'}
+        %input{:name => 'input', :value => '1 3 4 2 3 2 2 1 3 2 1'}
+        %button.btn.btn-md.btn-primary{:type => 'submit'} Submit
+      %table
+        -for result in @results
+          %tr
+            -for cell in result
+              %td.scores{:title => "#{cell[:score]}", :style => "background-color:rgb(#{cell[:color]}, 0, 0)"}=cell[:value]
+    :javascript
+      $(document).ready(function() {
+        var scores = #{@scores};
+        var cells = $('.scores');
+        $(document).tooltip({ position: {at: "center"}});
+      });
