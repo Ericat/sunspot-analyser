@@ -19,3 +19,11 @@ Example output:
 |:--------------:|:--------------:|:--------------:|
 |:low_brightness:|:low_brightness:|:high_brightness:|
 |:high_brightness:|:low_brightness:|:high_brightness:|
+
+Visualisation 
+=============
+:small_red_triangle_down: Gems: Sinatra, Sass, Haml
+
+JQuery Tooltip displays scores:
+
+![Interface](https://raw.github.com/Ericat/sunspot-analyser/master/public/images/jquery-hover.png)
